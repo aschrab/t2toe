@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var Dispatcher = require('../dispatcher/game');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeSquare',
@@ -11,6 +12,6 @@ module.exports = React.createClass({
 		return <span onClick={this.handleClick} className={classes}>{this.props.space}&nbsp;</span>;
 	},
 	handleClick: function() {
-		this._owner.move(this.props.space);
+		Dispatcher.dispatch({ action: 'move', square: this.props.space });
 	}
 });

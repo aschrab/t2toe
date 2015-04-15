@@ -6,13 +6,6 @@ var Game = require('../lib/game');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeBoard',
-	componentDidMount: function() {
-	},
-	componentWillUnmount: function() {
-	},
-	move: function(r,c) {
-		this._owner.move(r,c);
-	},
 	render: function() {
 		var squares = [];
 		var game = this.props.game;

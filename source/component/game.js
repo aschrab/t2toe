@@ -3,11 +3,26 @@ var Square = require('./square');
 var Game = require('../lib/game');
 var Board = require('./board');
 var WOPR = require('../lib/wopr');
+var Dispatcher = require('../dispatcher/game');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeGame',
 	getInitialState: function() {
 		return { game: new Game() };
+	},
+	handleEvent: function(payload) {
+		switch (payload.action) {
+			case 'move':
+				this.move( payload.square );
+				break;
+		}
+	},
+	componentDidMount: function() {
+		var self = this;
+		this.dispatchCallback = Dispatcher.register( this.handleEvent.bind(this) );
+	},
+	componentWillUnmount: function() {
+		Dispatcher.unregister(this.dispatchCallback);
 	},
 	move: function(r,c) {
 		var game = this.state.game;
