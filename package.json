@@ -5,21 +5,25 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^1.5.3",
-    "jsx-loader": "^0.12.2",
-    "style-loader": "^0.8.3",
     "css-loader": "^0.9.1",
-    "script-loader": "^0.6.1",
+    "file-loader": "^0.8.1",
+    "jest-cli": "^0.4.0",
+    "jsx-loader": "^0.12.2",
     "less": "^2.4.0",
     "less-loader": "^2.0.0",
-    "file-loader": "^0.8.1",
+    "sass-loader": "^0.4.0-beta.1",
+    "script-loader": "^0.6.1",
+    "style-loader": "^0.8.3",
     "url-loader": "^0.5.5",
-    "react": "^0.12.2",
-    "sass-loader": "^0.4.0-beta.1"
+    "webpack": "^1.5.3"
+  },
+  "dependencies": {
+    "object-assign": "^2.0.0",
+    "react": "^0.12.2"
   }
 }
