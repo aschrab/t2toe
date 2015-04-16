@@ -28,7 +28,7 @@ module.exports = React.createClass({
 			}
 		}
 
-		return <div>{squares}</div>;
+		return <div className="board">{squares}</div>;
 	},
 	_onChange: function() {
 	}
