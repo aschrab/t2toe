@@ -12,6 +12,9 @@
   "devDependencies": {
     "css-loader": "^0.9.1",
     "file-loader": "^0.8.1",
+    "gulp": "^3.8.11",
+    "gulp-cli": "^0.2.0",
+    "gulp-shell": "^0.4.1",
     "jest-cli": "^0.4.0",
     "jsx-loader": "^0.12.2",
     "less": "^2.4.0",
