@@ -3,12 +3,18 @@ var T2Toe;
 T2Toe = (function() {
 	function T2Toe(board, player) {
 		this.player = player || 1;
-		this.board = board || [
+		this.board = [
 			0,0,0,
 			0,0,0,
 			0,0,0,
 		];
-	}
+
+		if (board) {
+			for( var i = 0; i < board.length; ++i ) {
+				this.board[i] = board[i];
+			}
+		}
+	};
 
 	T2Toe.prototype.player = function() {
 		return this.player;
