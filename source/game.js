@@ -39,6 +39,41 @@ T2Toe = (function() {
 		return this;
 	};
 
+	T2Toe.prototype.winner = function() {
+		var i,o;
+
+		// Check for horizontal winner
+		for(i = 0; i < 3; ++i) {
+			o = this.owner(i,0);
+			if(o && o === this.owner(i,1) && o === this.owner(i,2)) {
+				return o; // found a winner
+			}
+		}
+
+		// Check for vertical winner
+		for(i = 0; i < 3; ++i) {
+			o = this.owner(0,i);
+			if( o && o === this.owner(1,i) && o === this.owner(2,i)) {
+				return o; // found a winner
+			}
+		}
+
+		// Check for diagonal winner
+		o = this.owner(1,1);
+		if(o) {
+			if(o === this.owner(0,0) && o === this.owner(2,2)) {
+				return o;
+			}
+
+			if(o === this.owner(0,2) && o === this.owner(2,0)) {
+				return o;
+			}
+		}
+
+
+		return 0;
+	}
+
 	return T2Toe;
 
 })();
