@@ -9,6 +9,6 @@ gulp.task('default', ['tdd']);
 
 gulp.task('test', shell.task('jest', { ignoreErrors: true  } ) );
 
-gulp.task('tdd', function(done) {
+gulp.task('tdd', ['test'], function(done) {
 	gulp.watch(['__tests__/*.js', 'source/**/*.js'], ['test']);
 });
