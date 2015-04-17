@@ -5,7 +5,7 @@ module.exports = {
 	debug: true,
 	devtool: "source-map",
 	entry: {
-		main: "./source/main"
+		main: [ "webpack/hot/dev-server", "./source/main" ]
 	},
 	output: {
 		path: "./build",

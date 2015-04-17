@@ -4,7 +4,7 @@
   "description": "Tic Tac Toe",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors",
+    "start": "webpack-dev-server --progress --colors --content-base build/ --hot",
     "test": "jest"
   },
   "author": "",
