@@ -24,6 +24,15 @@ T2Toe = (function() {
 		return 3 - this._player;
 	}
 
+	T2Toe.prototype.available_spaces = function() {
+		var avail = [];
+		for( var i = 0; i < 9; ++i ) {
+			if (!this.board[i])
+				avail.push(i);
+		}
+		return avail;
+	}
+
 	var space = T2Toe.prototype.space = function(r, c) {
 		if(typeof c === 'undefined') {
 			if(r < 0 || r >= 9) throw "Invalid space (" + r + ")";
