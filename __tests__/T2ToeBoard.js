@@ -14,7 +14,7 @@ describe('T2ToeBoard', function() {
 			var game = new T2ToeBoard();
 			game.move(0,0);
 			expect(game.owner(0,0)).toBe(0)
-			expect(game.player).toBe(1);
+			expect(game.player()).toBe(1);
 		});
 		it('throws exception if square is already taken', function() {
 			var game = new T2ToeBoard();
