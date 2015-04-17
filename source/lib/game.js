@@ -1,7 +1,7 @@
 var T2Toe;
 
 T2Toe = (function() {
-	function T2Toe(board, player) {
+	function T2Toe(board, player, history) {
 		this._player = player || 1;
 		this.board = [
 			0,0,0,
@@ -14,6 +14,8 @@ T2Toe = (function() {
 				this.board[i] = board[i];
 			}
 		}
+
+		this._history = (history || []).slice();
 	};
 
 	T2Toe.prototype.player = function() {
@@ -51,13 +53,15 @@ T2Toe = (function() {
 		if( this.owner(r,c) != 0 ) {
 			throw "Space is already taken";
 		}
-		var n = new T2Toe(this.board,this._player);
+		var n = new T2Toe(this.board,this._player, this._history);
 		n._move(r,c);
 		return n;
 	};
 
 	T2Toe.prototype._move = function(r, c) {
-		this.board[this.space(r, c)] = this._player;
+		var space = this.space(r, c);
+		this.board[space] = this._player;
+		this._history.push(space);
 		this._player = this.next_player();
 		return this;
 	};
