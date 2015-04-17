@@ -16,6 +16,10 @@ module.exports = {
 	},
 	module: {
 		loaders: [
+			{ test: /\.svg$/, loaders: [
+				'file?hash=sha512&digest=hex&name=[hash].[ext]'
+				,'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
+			] },
 			{ test: /\.css/, loader: "style-loader!css-loader" },
 			{ test: /\.js$/, loader: "jsx-loader?harmony" },
 			{ test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded" }

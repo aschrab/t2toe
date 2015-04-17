@@ -1,13 +1,24 @@
-.board {
-	$square: 200px;
+$square: 200px;
 
+.board {
 	max-width: 3*$square + 6;
 	border: 3px solid black;
 
 	.square {
-		display: inline-block;
 		border: 1px solid black;
-		width: $square;
-		height: $square;
+	}
+}
+
+.square {
+	display: inline-block;
+	width: $square;
+	height: $square;
+	background-size: 100%;
+
+	&.player1 {
+		background-image: url(../images/cross.svg);
+	}
+	&.player2 {
+		background-image: url(../images/circle.svg);
 	}
 }
