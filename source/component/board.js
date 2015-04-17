@@ -17,12 +17,9 @@ module.exports = React.createClass({
 		var squares = [];
 		var game = this.props.game;
 
-		for( var r = 0; r < 3; ++r ) {
-			for( var c = 0; c < 3; ++c ) {
-				var k = 'r' + r + 'c' + c;
-				var owner = game.owner(r,c);
-				squares.push( <Square key={k} row={r} col={c} owner={owner} /> );
-			}
+		for( var s = 0; s < 9; ++s ) {
+			var owner = game.owner(s);
+			squares.push( <Square key={s} space={s} owner={owner} /> );
 		}
 
 		return <div className="board">{squares}</div>;
