@@ -1,6 +1,6 @@
 require('./styles/main.scss');
 
 var React = window.React = require('react')
-var Board = require('./component/board')
+var Game = require('./component/game')
 
-React.render(<Board />, document.getElementById('content'))
+React.render(<Game />, document.getElementById('content'))

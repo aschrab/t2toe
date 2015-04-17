@@ -3,26 +3,19 @@
 var React = require('react');
 var Square = require('./square');
 var Game = require('../lib/game');
-var WOPR = require('../lib/wopr');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeBoard',
-	getInitialState: function() {
-		return { game: new Game() };
-	},
 	componentDidMount: function() {
 	},
 	componentWillUnmount: function() {
 	},
 	move: function(r,c) {
-		var game = this.state.game;
-		game = game.move(r,c);
-		game = WOPR.move(game);
-		this.setState({ game: game });
+		this._owner.move(r,c);
 	},
 	render: function() {
 		var squares = [];
-		var game = this.state.game;
+		var game = this.props.game;
 
 		for( var r = 0; r < 3; ++r ) {
 			for( var c = 0; c < 3; ++c ) {
