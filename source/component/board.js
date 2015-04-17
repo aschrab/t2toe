@@ -1,9 +1,9 @@
 'use strict';
 
 var React = require('react');
-var Square = require('./view/square');
-var Game = require('./game');
-var WOPR = require('./wopr');
+var Square = require('./square');
+var Game = require('../lib/game');
+var WOPR = require('../lib/wopr');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeBoard',

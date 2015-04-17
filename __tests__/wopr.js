@@ -1,9 +1,9 @@
 'use strict';
 
-jest.dontMock('../source/game.js');
-jest.dontMock('../source/wopr.js');
-var Game = require('../source/game.js');
-var WOPR = require('../source/wopr.js');
+jest.dontMock('../source/lib/game.js');
+jest.dontMock('../source/lib/wopr.js');
+var Game = require('../source/lib/game.js');
+var WOPR = require('../source/lib/wopr.js');
 
 describe('WOPR', function() {
 	it('is unbeatable when it goes second', function() {
