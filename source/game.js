@@ -20,7 +20,11 @@ T2Toe = (function() {
 		return this.player;
 	};
 
-	T2Toe.prototype.space = function(r, c) {
+	var space = T2Toe.prototype.space = function(r, c) {
+		if(typeof c === 'undefined') {
+			if(r < 0 || r >= 9) throw "Invalid space (" + r + ")";
+			return r;
+		}
 		if (r < 0 || r > 2) throw "Invalid row (" + r + ")";
 		if (c < 0 || c > 2) throw "Invalid column (" + c + ")";
 		return (r * 3) + c;
@@ -45,39 +49,37 @@ T2Toe = (function() {
 		return this;
 	};
 
+	T2Toe.prototype.winning_combinations = (function () {
+		var r = [];
+		var i;
+
+		// horizontal
+		for(i = 0; i < 3; ++i)
+			r.push([ space(i,0), space(i,1), space(i,2) ]);
+
+		// vertical
+		for(i = 0; i < 3; ++i)
+			r.push([ space(0,i), space(1,i), space(2,i) ]);
+
+		// diagonals
+		r.push([ space(0,0), space(1,1), space(2,2) ]);
+		r.push([ space(0,2), space(1,1), space(2,0) ]);
+
+		return r;
+	})();
+
 	T2Toe.prototype.winner = function() {
-		var i,o;
-
-		// Check for horizontal winner
-		for(i = 0; i < 3; ++i) {
-			o = this.owner(i,0);
-			if(o && o === this.owner(i,1) && o === this.owner(i,2)) {
-				return o; // found a winner
+		var winner = 0;
+		this.winning_combinations.every(function(spaces) {
+			var o = this.owner(spaces[0]);
+			if(o && o === this.owner(spaces[1]) && o === this.owner(spaces[2])) {
+				winner = o;
+				return false; // stop iteration
 			}
-		}
+			return true; // continue iterating
+		}, this);
 
-		// Check for vertical winner
-		for(i = 0; i < 3; ++i) {
-			o = this.owner(0,i);
-			if( o && o === this.owner(1,i) && o === this.owner(2,i)) {
-				return o; // found a winner
-			}
-		}
-
-		// Check for diagonal winner
-		o = this.owner(1,1);
-		if(o) {
-			if(o === this.owner(0,0) && o === this.owner(2,2)) {
-				return o;
-			}
-
-			if(o === this.owner(0,2) && o === this.owner(2,0)) {
-				return o;
-			}
-		}
-
-
-		return 0;
+		return winner;
 	}
 
 	return T2Toe;
