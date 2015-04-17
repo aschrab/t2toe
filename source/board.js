@@ -3,6 +3,7 @@
 var React = require('react');
 var Square = require('./view/square');
 var Game = require('./game');
+var WOPR = require('./wopr');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeBoard',
@@ -14,7 +15,10 @@ module.exports = React.createClass({
 	componentWillUnmount: function() {
 	},
 	move: function(r,c) {
-		this.setState({ game: this.state.game.move(r,c) });
+		var game = this.state.game;
+		game = game.move(r,c);
+		game = WOPR.move(game);
+		this.setState({ game: game });
 	},
 	render: function() {
 		var squares = [];
