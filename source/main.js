@@ -13,6 +13,16 @@ var App = React.createClass({
 		return (
 			<div>
 				<header>
+					<nav>
+						<ul>
+							<li>
+								<Router.Link to="app">Home</Router.Link>
+							</li>
+							<li>
+								<a href="https://github.com/aschrab/t2toe">GitHub</a>
+							</li>
+						</ul>
+					</nav>
 					<h1>T<sup>2</sup>Toe</h1>
 				</header>
 				<RouteHandler />
