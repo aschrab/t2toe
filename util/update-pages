@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+base_dir=$(mktemp -d)
+trap "rm -rf '$base_dir'" EXIT
+build_dir=$base_dir/build
+mkdir $build_dir
+
+webpack -p --output-path $build_dir
+
+GIT_DIR="$(git rev-parse --git-dir)"
+GIT_DIR="$(perl -MCwd -e 'print Cwd::abs_path($ARGV[0])' $GIT_DIR)"
+export GIT_DIR
+
+GIT_INDEX_FILE=$base_dir/index
+export GIT_INDEX_FILE
+
+cd $build_dir
+git add .
+tree=$(git write-tree)
+
+branch=gh-pages
+if git rev-parse --quiet --verify "$branch"; then
+	rev=$(git rev-parse "$branch")
+	parents="-p $rev"
+fi
+parents="$parents -p HEAD"
+
+commit=$(git commit-tree $parents -m "Update $branch" $tree)
+git update-ref --no-deref -m "Updating" "refs/heads/$branch" $commit
