@@ -11,6 +11,11 @@ module.exports = {
 	target: "web",
 	debug: true,
 	devtool: "source-map",
+	devServer: {
+		host: "::",
+		progress: true,
+		colors: true,
+	},
 	entry: {
 		main: [ "webpack/hot/dev-server", "./source/main" ]
 	},
