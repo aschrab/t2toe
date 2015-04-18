@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Tic Tac Toe",
   "scripts": {
-    "start": "webpack-dev-server --hot",
+    "start": "webpack-dev-server --hot --config webpack_devserver_config.js",
     "test": "jest"
   },
   "author": "Aaron Schrab <aaron@schrab.com>",
