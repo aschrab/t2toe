@@ -19,7 +19,7 @@ module.exports = React.createClass({
 	},
 	componentDidMount: function() {
 		var self = this;
-		this.dispatchCallback = Dispatcher.register( this.handleEvent.bind(this) );
+		this.dispatchCallback = Dispatcher.register( this.handleEvent );
 	},
 	componentWillUnmount: function() {
 		Dispatcher.unregister(this.dispatchCallback);
