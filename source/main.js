@@ -7,6 +7,7 @@ var RouteHandler = Router.RouteHandler;
 
 var Game = require('./pages/game');
 var Home = require('./pages/home');
+var Strange = require('./pages/strangegame');
 
 var App = React.createClass({
 	render: function() {
@@ -34,6 +35,7 @@ var App = React.createClass({
 var routes = (
 	<Route name="app" path="/" handler={App}>
 		<Route name="game" path="board" handler={Game} />
+		<Route name="strange" path="strangegame" handler={Strange} />
 		<Router.DefaultRoute handler={Home} />
 	</Route>
 );
