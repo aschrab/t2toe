@@ -14,7 +14,7 @@ module.exports = (function() {
 				var w = n.winner();
 				if (w === g.player()) { scores[space] = 10 }
 				else if (w) { scores[space] = -10 }
-				else { scores[space] = -1 * min_max(n)[1] }
+				else { scores[space] = -0.9 * min_max(n)[1] }
 			});
 
 			var m = Object.keys(scores).sort(function(a,b){return scores[b]-scores[a]}).shift();
