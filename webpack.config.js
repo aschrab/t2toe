@@ -1,5 +1,12 @@
 //var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
 
+var HTML = require('html-webpack-plugin');
+
+html = new HTML({
+	title: "T2Toe",
+	template: "source/templates/react.html"
+});
+
 module.exports = {
 	target: "web",
 	debug: true,
@@ -9,7 +16,7 @@ module.exports = {
 	},
 	output: {
 		path: "./build",
-		filename: "[name].bundle.js"
+		filename: "[hash].bundle.js"
 	},
 	resolve: {
 		modulesDirectories: ['bower_components', 'node_modules'],
@@ -26,6 +33,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		html
 		//new UglifyJsPlugin()
 	]
 };
