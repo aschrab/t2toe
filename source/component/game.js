@@ -6,7 +6,7 @@ var WOPR = require('../lib/wopr');
 var Dispatcher = require('../dispatcher/game');
 
 module.exports = React.createClass({
-	displayName: 'T2ToeGame',
+	displayName: 'T2ToeGameView',
 	getInitialState: function() {
 		return { game: new Game() };
 	},
