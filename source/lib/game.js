@@ -82,13 +82,13 @@ T2Toe = (function() {
 
 	T2Toe.prototype.winner = function() {
 		var winner = 0;
-		this.winning_combinations.every(function(spaces) {
+		this.winning_combinations.some(function(spaces) {
 			var o = this.owner(spaces[0]);
 			if(o && o === this.owner(spaces[1]) && o === this.owner(spaces[2])) {
 				winner = o;
-				return false; // stop iteration
+				return true; // found winner, stop iteration
 			}
-			return true; // continue iterating
+			return false; // not a winner, continue iterating
 		}, this);
 
 		return winner;
