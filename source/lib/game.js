@@ -39,33 +39,22 @@ T2Toe = (function() {
 		return avail;
 	}
 
-	var space = T2Toe.prototype.space = function(r, c) {
-		if(typeof c === 'undefined') {
-			if(r < 0 || r >= 9) throw new Error("Invalid space (" + r + ")");
-			return r;
-		}
-		if (r < 0 || r > 2) throw new Error("Invalid row (" + r + ")");
-		if (c < 0 || c > 2) throw new Error("Invalid column (" + c + ")");
-		return (r * 3) + c;
+	T2Toe.prototype.owner = function(s) {
+		return this.board[ s ];
 	};
 
-	T2Toe.prototype.owner = function(r, c) {
-		return this.board[ this.space(r, c) ];
-	};
-
-	T2Toe.prototype.move = function(r, c) {
-		if( this.owner(r,c) != 0 ) {
+	T2Toe.prototype.move = function(s) {
+		if( this.owner(s) != 0 ) {
 			throw new Error("Space is already taken");
 		}
-		var n = new T2Toe(this.board,this._player, this._history);
-		n._move(r,c);
+		var n = new T2Toe(this.board, this._player, this._history);
+		n._move(s);
 		return n;
 	};
 
-	T2Toe.prototype._move = function(r, c) {
-		var space = this.space(r, c);
-		this.board[space] = this._player;
-		this._history.push(space);
+	T2Toe.prototype._move = function(s) {
+		this.board[s] = this._player;
+		this._history.push(s);
 		this._player = this.next_player();
 		return this;
 	};
@@ -73,6 +62,8 @@ T2Toe = (function() {
 	T2Toe.prototype.winning_combinations = (function () {
 		var r = [];
 		var i;
+
+		var space = function(r, c) { return (r * 3) + c; };
 
 		// horizontal
 		for(i = 0; i < 3; ++i)
