@@ -16,10 +16,28 @@ nav {
 	}
 }
 
-$square: 200px;
+@mixin board-size($square) {
+	$board-borders: 6;
+	.board {
+		width: 3*$square + $board-borders;
+	}
+	.square {
+		width: $square;
+		height: $square;
+	}
+}
+
+@include board-size(60px);
+
+@media (min-width:350px) and (min-height:500px) {
+	@include board-size(100px);
+}
+
+@media (min-width:650px) and (min-height:750px) {
+	@include board-size(200px);
+}
 
 .board {
-	max-width: 3*$square + 6;
 	border: 3px solid black;
 
 	.square {
@@ -29,8 +47,6 @@ $square: 200px;
 
 .square {
 	display: inline-block;
-	width: $square;
-	height: $square;
 	background-size: 100%;
 
 	&.player1 {
