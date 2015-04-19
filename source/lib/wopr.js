@@ -1,11 +1,14 @@
 'use strict';
 
+var score_cache = {};
+
 module.exports = (function() {
 	var WOPR = {};
 
 	WOPR.min_max = function (game) {
 		if (game.available_spaces().length === 0) return;
 		var min_max = function(g) {
+			if (score_cache[g]) return score_cache[g];
 			var scores = {};
 			var moves = g.available_spaces();
 			if (moves.length === 0) return [null,0];
@@ -18,7 +21,7 @@ module.exports = (function() {
 			});
 
 			var m = Object.keys(scores).sort(function(a,b){return scores[b]-scores[a]}).shift();
-			return [ m, scores[m] ];
+			return score_cache[g] = [ m, scores[m] ];
 		};
 
 		var move = min_max(game)[0];

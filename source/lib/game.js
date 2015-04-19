@@ -18,6 +18,10 @@ T2Toe = (function() {
 		this._history = (history || []).slice();
 	};
 
+	T2Toe.prototype.toString = function() {
+		return "T2ToeBoard{" + this._player + ":" + this.board.join(",") + "}";
+	};
+
 	T2Toe.prototype.player = function() {
 		return this._player;
 	};

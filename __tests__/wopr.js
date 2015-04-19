@@ -9,19 +9,24 @@ describe('WOPR', function() {
 	it('is unbeatable when it goes second', function() {
 		var game = new Game();
 		var losses = [];
+		var checked = {};
 
 		var turn = function(g) {
+			// Don't recheck board states
+			if(checked[g]) return;
+			checked[g] = true;
+
 			var avail = g.available_spaces();
 			// Check for stalemate
-			if (avail.length == 0) return true;
+			if (avail.length == 0) return;
 
-			return avail.every(function(space) {
+			return avail.forEach(function(space) {
 				var next = g.move(space);
-				if (next.winner() == 1) { console.log(g._history); return true; }
+				if (next.winner() == 1) { console.log(g._history); return; }
 				next = WOPR.move(next);
-				if (next.winner() == 2) { return true; }
+				if (next.winner() == 2) { return; }
 
-				return turn(next);
+				turn(next);
 			});
 		};
 
