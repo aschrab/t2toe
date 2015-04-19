@@ -40,3 +40,26 @@ $square: 200px;
 		background-image: url(../images/circle.svg);
 	}
 }
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.winner {
+  position: absolute;
+  z-index: 5;
+  height: 50%;
+  width: 50%;
+  background-color: white;
+  border: 3px solid green;
+  opacity: 50%;
+
+  .content {
+    @include vertical-center;
+    text-align: center;
+  }
+}

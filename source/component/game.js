@@ -2,6 +2,7 @@ var React = require('react');
 var Square = require('./square');
 var Game = require('../lib/game');
 var Board = require('./board');
+var Winner = require('./winner');
 var WOPR = require('../lib/wopr');
 var Dispatcher = require('../dispatcher/game');
 
@@ -14,6 +15,9 @@ module.exports = React.createClass({
 		switch (payload.action) {
 			case 'move':
 				this.move( payload.square );
+				break;
+			case 'newGame':
+				this.newGame();
 				break;
 		}
 	},
@@ -41,10 +45,8 @@ module.exports = React.createClass({
 	render: function() {
 		var game = this.state.game;
 
-		winner = "square player" + game.winner();
-
 		return <div className="game">
-			<div className={winner}/>
+			<Winner game={game} />
 			<Board game={game}/>
 
 			<button type="button" onClick={this.newGame}>New Game</button>
