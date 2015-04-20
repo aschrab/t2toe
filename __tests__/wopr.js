@@ -1,8 +1,8 @@
 'use strict';
 
-jest.dontMock('../source/lib/game.js');
+jest.dontMock('../source/lib/game_state.js');
 jest.dontMock('../source/lib/wopr.js');
-var Game = require('../source/lib/game.js');
+var Game = require('../source/lib/game_state.js');
 var WOPR = require('../source/lib/wopr.js');
 
 describe('WOPR', function() {

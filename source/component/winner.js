@@ -1,6 +1,6 @@
 var React = require('react');
 var Square = require('./square');
-var Dispatcher = require('../dispatcher/game');
+var Dispatcher = require('../dispatcher/game_dispatch');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeWinner',

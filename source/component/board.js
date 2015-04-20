@@ -2,7 +2,6 @@
 
 var React = require('react');
 var Square = require('./square');
-var Game = require('../lib/game');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeBoard',
@@ -17,6 +16,4 @@ module.exports = React.createClass({
 
 		return <div className="board">{squares}</div>;
 	},
-	_onChange: function() {
-	}
 });

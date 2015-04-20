@@ -1,5 +1,5 @@
 var React = require('react');
-var Game = require('../component/game');
+var GameView = require('../component/game_view');
 var Router = require('react-router');
 
 module.exports = React.createClass({
@@ -7,7 +7,7 @@ module.exports = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<Game />
+				<GameView />
 				<Router.Link to="strange">Give up</Router.Link>
 			</div>
 		);

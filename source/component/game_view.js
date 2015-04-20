@@ -1,10 +1,10 @@
 var React = require('react');
 var Square = require('./square');
-var Game = require('../lib/game');
+var Game = require('../lib/game_state');
 var Board = require('./board');
 var Winner = require('./winner');
 var WOPR = require('../lib/wopr');
-var Dispatcher = require('../dispatcher/game');
+var Dispatcher = require('../dispatcher/game_dispatch');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeGameView',

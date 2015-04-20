@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var Dispatcher = require('../dispatcher/game');
+var Dispatcher = require('../dispatcher/game_dispatch');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeSquare',

@@ -1,7 +1,7 @@
 'use strict';
 
-jest.dontMock('../source/lib/game.js');
-var T2ToeBoard = require('../source/lib/game.js');
+jest.dontMock('../source/lib/game_state.js');
+var T2ToeBoard = require('../source/lib/game_state.js');
 
 describe('T2ToeBoard', function() {
 	describe('move', function() {
