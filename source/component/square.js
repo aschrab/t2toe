@@ -9,7 +9,7 @@ module.exports = React.createClass({
 		var classes = "square";
 		if (this.props.owner)
 			classes += " player" + this.props.owner;
-		return <span onClick={this.handleClick} className={classes}>{this.props.space}&nbsp;</span>;
+		return <span onClick={this.handleClick} className={classes}>&nbsp;</span>;
 	},
 	handleClick: function() {
 		Dispatcher.dispatch({ action: 'move', square: this.props.space });
