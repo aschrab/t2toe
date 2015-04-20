@@ -1,25 +1,19 @@
 var React = require('react');
+var GameStore = require('../store/game_store');
 var Square = require('./square');
-var Game = require('../lib/game_state');
 var Board = require('./board');
 var Winner = require('./winner');
-var WOPR = require('../lib/wopr');
 var Dispatcher = require('../dispatcher/game_dispatch');
 
 module.exports = React.createClass({
 	displayName: 'T2ToeGameView',
 	getInitialState: function() {
-		return { game: new Game() };
+		this.game_store = new GameStore();
+		return { game: this.game_store.current() };
 	},
 	handleEvent: function(payload) {
-		switch (payload.action) {
-			case 'move':
-				this.move( payload.square );
-				break;
-			case 'newGame':
-				this.newGame();
-				break;
-		}
+		if (payload.action === 'new_state')
+			this.setState({ game: payload.state });
 	},
 	componentDidMount: function() {
 		var self = this;
@@ -27,20 +21,11 @@ module.exports = React.createClass({
 	},
 	componentWillUnmount: function() {
 		Dispatcher.unregister(this.dispatchCallback);
-	},
-	move: function(r,c) {
-		var game = this.state.game;
-
-		if (game.winner()) return;
-
-		game = game.move(r,c);
-		if (!game.winner())
-			game = WOPR.move(game);
-
-		this.setState({ game: game });
+		if (this.game_store)
+			this.game_store.destroy();
 	},
 	newGame: function() {
-		this.setState({ game: new Game() });
+		Dispatcher.dispatch({ action: 'new_game' });
 	},
 	render: function() {
 		var game = this.state.game;

@@ -22,6 +22,6 @@ module.exports = React.createClass({
 		)
 	},
 	newGame: function () {
-		Dispatcher.dispatch({ action: 'newGame' });
+		Dispatcher.dispatch({ action: 'new_game' });
 	}
 })
